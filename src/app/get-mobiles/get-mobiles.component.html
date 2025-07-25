@@ -1,0 +1,56 @@
+<div class="container mt-4">
+  <h2 class="text-primary mb-4 text-center">Mobile Products</h2>
+
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Enter brand name"
+      [(ngModel)]="searchBrand"
+    />
+    <button class="btn btn-primary" (click)="filterByBrand()">Search</button>
+  </div>
+
+  <div class="row" *ngIf="mobiles.length > 0; else noMobiles">
+    <div
+      class="col-md-4 d-flex align-items-stretch"
+      *ngFor="let mobile of mobiles"
+    >
+      <div class="card mb-4 shadow-sm w-100">
+        <img
+          [src]="'data:image/jpeg;base64,' + mobile.imageFile"
+          class="card-img-top"
+          alt="Mobile Image"
+          style="height: 200px; object-fit: contain"
+        />
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title">{{ mobile.model }}</h5>
+          <p class="card-text"><strong>Brand:</strong> {{ mobile.brand }}</p>
+          <p class="card-text"><strong>Price:</strong> ₹{{ mobile.price }}</p>
+          <p class="card-text">
+            <strong>Quantity:</strong> {{ mobile.quantity }}
+          </p>
+          <!-- Optional: button aligned to bottom -->
+          <div class="d-flex mt-auto">
+            <button 
+              class="btn btn-success mx-3"
+              (click)="updateMobile(mobile)"
+            >
+              Update
+            </button>
+            <button
+              class="btn btn-danger mx-3"
+              (click)="deleteMobile(mobile!)"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #noMobiles>
+    <div class="alert alert-warning text-center">No mobile products found.</div>
+  </ng-template>
+</div>

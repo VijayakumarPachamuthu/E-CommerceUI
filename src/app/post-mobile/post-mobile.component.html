@@ -1,0 +1,32 @@
+<div class="container mt-4">
+  <h4 class="text-primary mb-4">Add Mobile</h4>
+
+  <form #productForm="ngForm" (ngSubmit)="submitProduct()">
+    <div class="mb-3">
+      <label for="model" class="form-label">Model</label>
+      <input type="text" id="model" name="model" [(ngModel)]="model" class="form-control" placeholder="Enter model" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="brand" class="form-label">Brand</label>
+      <input type="text" id="brand" name="brand" [(ngModel)]="brand" class="form-control" placeholder="Enter brand" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input type="number" id="price" name="price" [(ngModel)]="price" class="form-control" placeholder="Enter price" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input type="number" id="quantity" name="quantity" [(ngModel)]="quantity" class="form-control" placeholder="Enter quantity" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Product Image</label>
+      <input type="file" id="image" (change)="onFileChange($event)" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>

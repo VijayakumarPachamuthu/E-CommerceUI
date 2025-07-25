@@ -1,0 +1,33 @@
+<p>update works!</p>
+<div class="container mt-4">
+  <h2 class="text-primary text-center mb-4">Update Mobile</h2>
+
+  <form (ngSubmit)="submitUpdate()">
+    <div class="mb-3">
+      <label for="model" class="form-label">Model</label>
+      <input id="model" class="form-control" [(ngModel)]="model" name="model" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="brand" class="form-label">Brand</label>
+      <input id="brand" class="form-control" [(ngModel)]="brand" name="brand" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price</label>
+      <input id="price" type="number" class="form-control" [(ngModel)]="price" name="price" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="quantity" class="form-label">Quantity</label>
+      <input id="quantity" type="number" class="form-control" [(ngModel)]="quantity" name="quantity" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="image" class="form-label">Image (optional)</label>
+      <input id="image" type="file" class="form-control" (change)="onFileChange($event)" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Update</button>
+  </form>
+</div>
