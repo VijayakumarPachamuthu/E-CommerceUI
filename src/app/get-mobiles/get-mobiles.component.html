@@ -7,6 +7,7 @@
       class="form-control"
       placeholder="Enter brand name"
       [(ngModel)]="searchBrand"
+      (ngModelChange)="filterByBrand()"
     />
     <button class="btn btn-primary" (click)="filterByBrand()">Search</button>
   </div>
@@ -32,16 +33,10 @@
           </p>
           <!-- Optional: button aligned to bottom -->
           <div class="d-flex mt-auto">
-            <button 
-              class="btn btn-success mx-3"
-              (click)="updateMobile(mobile)"
-            >
+            <button class="btn btn-success mx-3" (click)="updateMobile(mobile)">
               Update
             </button>
-            <button
-              class="btn btn-danger mx-3"
-              (click)="deleteMobile(mobile!)"
-            >
+            <button class="btn btn-danger mx-3" (click)="deleteMobile(mobile!)">
               Delete
             </button>
           </div>

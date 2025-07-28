@@ -1,19 +1,19 @@
-<!-- <app-post-mobile></app-post-mobile> -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body>
-    <div class="container mt-4">
-      <router-outlet></router-outlet>
+<app-header class="fixed-top" (toggleSidebar)="toggleSidebar()"></app-header>
 
-      <div class="text-end mt-3">
-        <button class="btn btn-warning my-5 mx-2" (click)="goPostMobiles()">Go Post Page</button>
-        <button class="btn btn-warning my-5 mx-2" (click)="goGetMobiles()">Get All Page</button>
-      </div>
-    </div>
-  </body>
-</html>
+<div class="main-layout d-flex">
+  <app-sidebar [isOpen]="sidebarVisible"></app-sidebar>
+
+  <div class="content flex-grow-1 ms-0" [style.marginLeft.px]="sidebarVisible ? 200 : 0">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+  <!-- <div class="text-end mt-3">
+    <button class="btn btn-warning my-5 mx-2" (click)="goPostMobiles()">
+      Go Post Page
+    </button>
+    <button class="btn btn-warning my-5 mx-2" (click)="goGetMobiles()">
+      Get All Page
+    </button>
+  </div> -->
+

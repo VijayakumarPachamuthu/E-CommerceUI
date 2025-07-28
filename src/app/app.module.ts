@@ -9,13 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { GetMobilesComponent } from './get-mobiles/get-mobiles.component';
 import { UpdateComponent } from './update/update.component';
+import { HeaderComponent } from './layout/header/header.component';
+import { SidebarComponent } from './layout/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PostMobileComponent,
     GetMobilesComponent,
-    UpdateComponent
+    UpdateComponent,
+    HeaderComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

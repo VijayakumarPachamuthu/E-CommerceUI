@@ -1,0 +1,10 @@
+.main-layout {
+  display: flex;
+}
+
+.content {
+  padding: 20px;
+  margin-top: 56px; /* height of navbar */
+  transition: margin-left ;
+}
+

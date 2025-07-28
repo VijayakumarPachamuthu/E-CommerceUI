@@ -10,9 +10,8 @@ const routes: Routes = [{
   path: 'get', component: GetMobilesComponent
 }, { 
   path: 'update/:id', component: UpdateComponent
-},
-{
-  path: '', redirectTo: 'post', pathMatch: 'full'
+},{
+  path: '', redirectTo: 'get', pathMatch: 'full'
 },];
 
 
