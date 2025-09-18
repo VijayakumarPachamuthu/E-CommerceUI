@@ -1,17 +1,29 @@
 <div [@slideInOut]="isOpen ? 'open' : 'closed'" class="sidebar bg-light border-end">
   <ul class="nav flex-column pt-3">
     <li class="nav-item">
-      <a routerLink="/post" class="nav-link d-flex align-items-center">
+      <a 
+        routerLink="/post" 
+        class="nav-link d-flex align-items-center"
+        (click)="onLinkClick()"
+      >
         <i class="bi bi-plus-circle me-2"></i> Post Product
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/get" class="nav-link d-flex align-items-center">
+      <a 
+        routerLink="/get" 
+        class="nav-link d-flex align-items-center"
+        (click)="onLinkClick()"
+      >
         <i class="bi bi-card-list me-2"></i> Get All Products
       </a>
     </li>
     <li class="nav-item">
-      <a routerLink="/update/1" class="nav-link d-flex align-items-center">
+      <a 
+        routerLink="/update/1" 
+        class="nav-link d-flex align-items-center"
+        (click)="onLinkClick()"
+      >
         <i class="bi bi-pencil-square me-2"></i> Update Product
       </a>
     </li>

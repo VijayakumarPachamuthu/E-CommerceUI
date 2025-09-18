@@ -1,6 +1,6 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { NavigationEnd, Route, Router } from '@angular/router';
-import { filter } from 'rxjs';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { NavigationEnd, Router, Event } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -9,35 +9,40 @@ import { filter } from 'rxjs';
 })
 export class AppComponent {
   title = 'ecommerce';
+
   @ViewChild('sidebarRef', { static: false }) sidebarRef!: ElementRef;
   @ViewChild('contentRef', { static: false }) contentRef!: ElementRef;
 
-  constructor(private router: Router) { this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.sidebarVisible = false;
-      }); }
+  sidebarVisible = true;  // ✅ use this instead of isSidebarOpen
+  showLayout = true;
+  isOpen = false
 
-  goGetMobiles() {
-    this.router.navigate(['get']);
+  constructor(private router: Router) {
+    this.router.events
+      .pipe(filter((event: Event): event is NavigationEnd => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        if (event.url === '/login' || event.url === '/signup') {
+          this.showLayout = false;
+          this.sidebarVisible = false;
+        } else {
+          this.showLayout = true;
+        }
+      });
   }
-  goPostMobiles() {
-    this.router.navigate(['post']);
-  }
-
-  sidebarVisible = true;
 
   toggleSidebar() {
     this.sidebarVisible = !this.sidebarVisible;
   }
 
-  //  @HostListener  ('document:click', ['$event'])
-  // onDocumentClick(event: MouseEvent): void {
-  //   const clickedInsideSidebar = this.sidebarRef?.nativeElement.contains(event.target);
-  //   const clickedInsideContent = this.contentRef?.nativeElement.contains(event.target);
+  closeSidebar() {           // ✅ add this method
+    this.sidebarVisible = false;
+  }
 
-  //   if (!clickedInsideSidebar && !clickedInsideContent && this.sidebarVisible) {
-  //     this.sidebarVisible = false;
-  //   }
-  // }
+  goGetMobiles() {
+    this.router.navigate(['get']);
+  }
+
+  goPostMobiles() {
+    this.router.navigate(['post']);
+  }
 }

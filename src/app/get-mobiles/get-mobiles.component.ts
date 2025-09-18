@@ -47,6 +47,7 @@ export class GetMobilesComponent {
   getAllMobiles(): void {
     this.mobileService.getAllMobiles().subscribe(data => {
       this.mobiles = data;
+      console.log("rec")
     });
   }
 
